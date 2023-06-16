@@ -85,10 +85,7 @@ const registrar = async () => {
     })
       .then((resp) => resp.json())
       .then(json => {
-        //alert(json.msg)
-        console.log(
-          json.msg,
-        )
+        alert(json.msg)
       });
   } 
 
@@ -115,16 +112,58 @@ const actualizar = async () => {
       })
       .then((response) => response.json())
       .then(json => {
-        alert(json.msg)
+        
       }).then(() => {
         location.reload()
       })
 
       
   } 
-
+  if (document.querySelector('#btnActualizar')) {
+  document.getElementById("btnActualizar").addEventListener("click", function() {
+    let direccion = document.getElementById("direccion").value;
+    let latitud = document.getElementById("latitud").value;
+    let longitud = document.getElementById("longitud").value;
+    let descripcion = document.getElementById("descripcion").value;
   
+    if (direccion.trim() === "") {
+      alert("Por favor, ingresa una dirección.");
+      return;
+    }
+  
+    if (latitud.trim() === "") {
+      alert("Por favor, ingresa una latitud.");
+      return;
+    }
 
+    if (longitud.trim() === "") {
+      alert("Por favor, ingresa una longitud.");
+      return;
+    }
+  
+    if (descripcion.trim() === "") {
+      alert("Por favor, ingresa una descripción.");
+      return;
+    }
+
+  });
+}
+
+  if (document.querySelector('#btnRegistrar')) {
+// Obtener el formulario
+const form = document.querySelector('.needs-validation');
+
+// Agregar un event listener para el botón de registro
+document.getElementById('btnRegistrar').addEventListener('click', function(event) {
+  // Validar el formulario cuando se hace clic en el botón de registro
+  if (!form.checkValidity()) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  
+  form.classList.add('was-validated');
+});
+}
 
 if (document.querySelector('#btnRegistrar')) {
   document.querySelector('#btnRegistrar')

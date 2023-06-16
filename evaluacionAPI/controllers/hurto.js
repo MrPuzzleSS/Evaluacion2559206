@@ -53,12 +53,12 @@ const hurtoPost = async (req, res = response) => {
 }
 
 const hurtoPut = async (req, res = response) => {
-  const { direccion, latitud, longitud, descripcion, fecha } = req.body;
+  const { _id, direccion, latitud, longitud, descripcion, fecha } = req.body;
   let mensaje = '';
 
   try {
     const hurto = await Hurto.findOneAndUpdate(
-      { direccion: direccion},
+      { direccion:direccion },
       { direccion:direccion, latitud: latitud, longitud: longitud, descripcion: descripcion , fecha:fecha}
     );
 
